@@ -42,7 +42,9 @@ if (!isset($_SESSION["user_data"])) {
                     <p>Some info may be visible to other people</p>
                 </div>
                 <div>
-                    <button type="submit">Edit</button>
+                    <a href="../views/edit.php">
+                        <button type="button">Edit</button>
+                    </a>
                 </div>
             </div>
 

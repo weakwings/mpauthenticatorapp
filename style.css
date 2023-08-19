@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+
+/*========== Index ==========*/
+
+
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.index_container {
+    width: 480px;
+    height: 640px;
+    border-radius: 24px;
+    border: 1px solid #BDBDBD;
+}
+
+.index_container_box {
+    margin: 50px 60px;
+}
+
+.index_container_box h1 {
+    font-size: 18px;
+    color: #333;
+    padding: 28px 0 15px 0;
+}
+
+.index_container_box p {
+    font-size: 16px;  
+    color: #333;
+}
+
+#create_email {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #BDBDBD;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 10px center;
+    padding-left: 40px;
+    margin: 35px 0 15px 0;
+}
+
+#create_email {
+    background-image: url('img/mail.svg');
+}
+
+#create_pswd {
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #BDBDBD;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 10px center;
+    padding-left: 40px;
+    margin-bottom: 23px;
+}
+
+#create_pswd {
+    background-image: url('img/lock.svg');
+}
+
+#coding_now {
+    width: 100%;
+    height: 38px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    background-color: #2F80ED;
+    margin-bottom: 32px;
+    cursor: pointer;
+}
+
+.index_container_box2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.index_container_box2 p {
+    font-size: 14px;
+    color: #828282;
+}
+
+#index_icons {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    margin: 22px 0 28px 0;
+}
+
+#index_icons div {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #828282;
+    cursor: pointer;
+}
+
+#index_icons img {
+    width: 18px;
+    height: 18px;
+}
+
+.index_container_box a {
+    color: #2D9CDB;
+}
+
+#index_footer {
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
+    color: #828282;
+    padding-top: 13px;
+}
+
+#index_footer a {  
+    border-bottom:1px solid #828282;
+}

@@ -40,7 +40,7 @@
         </div>
         <div>
             <p>Don`t have an account yet?
-                <href type="submit"> Register </href>
+                <a href="/index.php" type="submit"> Register </a>
             </p>
         </div>
     </div>

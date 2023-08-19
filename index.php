@@ -40,7 +40,7 @@
         </div>
         <div>
             <p>Adready a member?
-                <input type="submit"> Login </input>
+                <a href="/views/login.php" type="submit"> Login </a>
             </p>
         </div>
     </div>

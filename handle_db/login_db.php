@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && $_POST["email"] !== "" && $_POST["p
                 session_start();
                 $_SESSION["user_data"] = $data;
 
-                header("Location:../views/dashboard.php");
+                header("Location:../views/profile.php");
             } else {
                 echo "As credenciais não coincidem";
             }

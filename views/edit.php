@@ -5,6 +5,7 @@ if (!isset($_SESSION["user_data"])) {
     die();
 }
 $data = $_SESSION["user_data"];
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ $data = $_SESSION["user_data"];
         <p>Changes will be reflected to every services</p>
     </div>
 
-    <form action="../handle_db/upload_img_db.php" enctype="multipart/form-data" method="post">
+    <form action="../handle_db/update_db.php" method="post" enctype="multipart/form-data">
         <div>
             <section>
                 <?php
@@ -48,27 +49,26 @@ $data = $_SESSION["user_data"];
             <input type="file" name="image" id="img">
         </div>
         <div>
-            <button type="submit">CHANGE PHOTO</button>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<?php isset($data['name']) ? print($data['name']) : print('') ?>">
+            <br>
+            <label for="bio">Bio</label>
+            <input type="text" name="bio" id="bio" value="<?php isset($data['bio']) ? print($data['bio']) : print('') ?>">
+            <br>
+            <label for="phone">Phone</label>
+            <input type="text" name="phone" id="phone" value="<?php isset($data['phone']) ? print($data['phone']) : print('') ?>">
+            <br>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="<?php isset($data['email']) ? print($data['email']) : print('') ?>">
+            <br>
+            <label for="password">password</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div>
+            <button type="submit">Save</button>
         </div>
     </form>
-    <form action="../handle_db/update_db.php" method="post">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" value="<?php isset($data['name']) ? print($data['name']) : print('') ?>">
-        <br>
-        <label for="bio">Bio</label>
-        <input type="text" name="bio" id="bio" value="<?php isset($data['bio']) ? print($data['bio']) : print('') ?>">
-        <br>
-        <label for="phone">Phone</label>
-        <input type="text" name="phone" id="phone" value="<?php isset($data['phone']) ? print($data['phone']) : print('') ?>">
-        <br>
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="<?php isset($data['email']) ? print($data['email']) : print('') ?>">
-        <br>
-        <label for="password">password</label>
-        <input type="password" name="password" id="password">
-        <br>
-        <button type="submit">Save</button>
-    </form>
+
 </body>
 
 </html>

@@ -6,14 +6,15 @@ if (!isset($_SESSION["user_data"])) {
 }
 
 require_once("../handle_db/connection.php");
-$stmt = $mysqli->prepare("SELECT name, bio, phone, email, psswrd FROM usuarios WHERE id_user = ?");
+$stmt = $mysqli->prepare("SELECT name, bio, phone, email, psswrd, avatar FROM usuarios WHERE id_user = ?");
 $stmt->bind_param("i", $_SESSION["user_data"]["id_user"]);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 $password = $user['psswrd'];
 $passwordSize = strlen($password);
-$passwordMask = str_repeat('*', $passwordSize);
+$passwordMask = str_repeat('*', min($passwordSize, 10));
+$avatarPath = isset($row["avatar"]) ? $row["avatar"] : "/img/default-avatar.jpg";
 
 ?>
 
@@ -40,9 +41,23 @@ $passwordMask = str_repeat('*', $passwordSize);
         </div>
         <div id="navbar_dropdown">
             <div id="mini_avatar">
-                <span id="img_box_avatar">avatar</span>
+                <span id="img_box_avatar"><?php
+                    require_once("../handle_db/connection.php");
+                    $email = $_SESSION["user_data"]["email"];
+                    $stmt = $mysqli->prepare("SELECT avatar FROM usuarios WHERE id_user = ? AND email = ?");
+                    $stmt->bind_param("is", $_SESSION["user_data"]["id_user"], $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();
+                    if (isset($row["avatar"])) {
+                        $dataImg = base64_encode($row["avatar"]);
+                        echo "<img src='data:image/jpg;base64, $dataImg' alt='image' width='32' height='32'>";
+                    } else {
+                        echo "No image";
+                    }
+                    ?></span>
             </div>
-            <span class="name_nick" id="name_nick"><?php echo $user['name']; ?></span>
+            <span class="name_nick" id="name_nick"><?php echo empty($user['name']) ? 'User name' : $user['name']; ?></span>
 
             <div id="navbar_dropdown_box">
                 <ul>
@@ -76,19 +91,35 @@ $passwordMask = str_repeat('*', $passwordSize);
             <div class="profile_box_infos">
                 <div id="info_pt">
                     <p class="info_pt">PHOTO</p>
-                    <i class="img_box_info">foto</i>
+                    <section class="img_box_info">
+                    <?php
+                    require_once("../handle_db/connection.php");
+                    $email = $_SESSION["user_data"]["email"];
+                    $stmt = $mysqli->prepare("SELECT avatar FROM usuarios WHERE id_user = ? AND email = ?");
+                    $stmt->bind_param("is", $_SESSION["user_data"]["id_user"], $email);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    $row = $result->fetch_assoc();
+                    if (isset($row["avatar"])) {
+                        $dataImg = base64_encode($row["avatar"]);
+                        echo "<img src='data:image/jpg;base64, $dataImg' alt='image' width='72' height='72'>";
+                    } else {
+                        echo "No image";
+                    }
+                    ?>
+                    </section>
                 </div>
                 <div id="info_nm">
                     <p class="info_nm">NAME</p>
-                    <i><?php echo $user['name']; ?></i>
+                    <i><?php echo empty($user['name']) ? 'name:' : $user['name']; ?></i>
                 </div>
                 <div id="info_bio">
                     <p class="info_bio">BIO</p>
-                    <i><?php echo $user['bio']; ?></i>
+                    <i><?php echo empty($user['bio']) ? 'bio:' : $user['bio']; ?></i>
                 </div>
                 <div id="info_pn">
                     <p class="info_pn">PHONE</p>
-                    <i><?php echo $user['phone']; ?></i>
+                    <i><?php echo empty($user['phone']) ? 'phone:' : $user['phone']; ?></i>
                 </div>
                 <div id="info_eml">
                     <p class="info_eml">EMAIL</p>

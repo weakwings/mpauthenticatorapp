@@ -38,8 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if (isset($_POST["password"]) && $_POST["password"] !== "") {
         $password = $_POST["password"];
-        $mysqli->query("UPDATE usuarios SET psswrd = '$password' WHERE id_user=$idUser");
-    }
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $mysqli->query("UPDATE usuarios SET psswrd = '$hash' WHERE id_user=$idUser");
+    }    
 
     $stmt = $mysqli->query("SELECT * FROM usuarios WHERE id_user=$idUser");
 
@@ -47,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_SESSION["user_data"] = $stmt->fetch_assoc();
     }
 
-    header("Location: ../views/profile.php");
+    header("Location: ../views/edit.php");
 } else {
-    echo "Não esta acessando esta pagina";
+    echo "Not accessing this page";
 }

@@ -4,23 +4,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $_POST["email"] !== "" && $_POST["p
     $password = $_POST["password"];
 
     try {
-
         require_once("connection.php");
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $result = $mysqli->query("INSERT INTO usuarios (email, psswrd) VALUES ('$email', '$hash');");
+        $stmt = $mysqli->prepare("INSERT INTO usuarios (email, psswrd) VALUES (?, ?)");
+        $stmt->bind_param("ss", $email, $hash);
+        $stmt->execute();
 
-        if ($result) {
-            $stmt = $mysqli->query("SELECT * FROM usuarios WHERE email = '$email'");
-            $data = $stmt->fetch_assoc();
-            session_start();
-            $_SESSION["user_data"] = $data;
-            header("Location:../views/login.php");
-        }
+        $stmt = $mysqli->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $data = $stmt->get_result()->fetch_assoc();
+        session_start();
+        $_SESSION["user_data"] = $data;
+        header("Location:../views/login.php");
     } catch (mysqli_sql_exception $e) {
-        echo "Error: " . $e->getMessage();
+        if ($e->getCode() == 1062) {
+            
+            echo "Email is already in use";
+        } else {
+            echo "Error: " . $e->getMessage();
+        }
     }
 } else {
-    echo "Não esta acessando essa Pagina";
+    echo "You don't have access to this page";
 }
+

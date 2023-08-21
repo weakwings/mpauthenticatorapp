@@ -16,12 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" && $_POST["email"] !== "" && $_POST["p
 
                 header("Location:../views/profile.php");
             } else {
-                echo "As credenciais não coincidem";
+                echo "Credentials do not match";
             }
         }
     } catch (mysqli_sql_exception $e) {
         echo "Error: " . $e->getMessage();
     }
 } else {
-    echo "Não se cumprem as condiçoes para fazer a colaboração dos dados do inicio da sessão.";
+    echo "The conditions for collaborating session start data are not met.";
 }

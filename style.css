@@ -134,3 +134,20 @@ body {
 #index_footer a {
     border-bottom: 1px solid #828282;
 }
+
+
+@media screen and (max-width: 425px) {
+
+
+    body {
+        height: 800px;
+    }
+
+    .index_container {
+        border: none;
+    }
+
+    #index_footer {
+        width: 380px;
+    }
+}

@@ -132,6 +132,7 @@ body {
     width: 32px;
     height: 32px;
     border: 1px solid #828282;
+    border-radius: 6px;
 }
 
 .name_nick {
@@ -201,7 +202,7 @@ body {
 
 #navbar_dropdown_box.show {
     display: block;
-    
+
 }
 
 /*========== Profile ==========*/
@@ -294,7 +295,133 @@ body {
 
 }
 
+/*========== Edit ==========*/
 
+.container_edit {
+    width: 846px;
+    height: 828px;
+    border-radius: 12px;
+    border: 1px solid #E0E0E0;
+    padding: 30px 50px;
+}
+
+#btn_back_box {
+    display: flex;
+    padding-right: 800px;
+    ;
+}
+
+.btn_back {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 18px;
+    color: #2D9CDB;
+    margin-bottom: 24px;
+}
+
+.edit_changes h1 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.edit_changes p {
+    font-size: 13px;
+    color: #828282;
+    margin-bottom: 25px;
+}
+
+.box_avatar {
+    height: 72px;
+    display: flex;
+    margin-bottom: 32px;
+}
+
+.avatar_edit {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid;
+}
+
+.icon_pht {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.pt_avatar {
+    display: flex;
+    align-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+}
+
+.change_pt {
+    display: flex;
+    align-items: center;
+    margin-left: 28px;
+    color: #828282;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.edit_nm, .edit_bio, .edit_pn, .edit_eml, .edit_pswd {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit_nm, .edit_bio, .edit_pn, .edit_eml, .edit_pswd label {
+    color: #4F4F4F;
+    font-size: 13px;
+}
+
+#edit_nm, #edit_pn, #edit_eml, #pswd_edit {
+    width: 417px;
+    height: 52px;
+    margin-bottom: 24px;
+    margin-top: 3px;
+    border-radius: 12px;
+    border: 1px solid #828282;
+    padding-left: 19px;
+}
+
+
+#bio_edit {
+    width: 417px;
+    height: 92px;
+    margin-bottom: 24px;
+    margin-top: 3px;
+    border-radius: 12px;
+    border: 1px solid #828282;
+    padding: 17px 0 57px 19px;
+}
+
+#edit_nm::placeholder, #edit_pn::placeholder, #edit_eml::placeholder, #pswd_edit::placeholder {
+    color: #BDBDBD;
+    font-size: 13px;
+}
+
+#bio_edit::placeholder {
+    color: #BDBDBD;
+    font-size: 13px;
+}
+
+.btn_save {
+    width: 82px;
+    height: 38px;
+    border-radius: 8px;
+    background: #2F80ED;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+}
 
 /*========== Footer ==========*/
 
@@ -325,4 +452,63 @@ body {
 #pfl_footer a {
     align-items: center;
     border-bottom: 1px solid #828282;
+}
+
+#edt_footer {
+    font-size: 14px;
+    width: 845px;
+    display: flex;
+    justify-content: space-between;
+    color: #828282;
+    padding-top: 13px;
+    margin-bottom: 100px;
+}
+
+#edt_footer a {
+    align-items: center;
+    border-bottom: 1px solid #828282;
+}
+
+
+@media screen and (max-width: 425px) {
+
+    .log_container {
+        border: none;
+    }
+
+    #log_footer {
+        width: 380px;
+    }
+
+    #navbar_dropdown>div:last-child {
+        background-color: #fff;
+    }
+
+    .profile_box_low {
+        width: 425px;
+        border: none;
+    }
+
+    #pfl_footer {
+        width: 370px;
+        margin-top: 40px;
+    }
+
+
+    #btn_back_box {
+        padding-right: 330px;
+        margin-top: 40px;
+    }
+
+    .container_edit {
+
+        width: 425px;
+        padding: 30px 4px;
+        border: none;
+    }
+
+    #edt_footer {
+        width: 370px;
+        margin-top: 40px;
+    }
 }
